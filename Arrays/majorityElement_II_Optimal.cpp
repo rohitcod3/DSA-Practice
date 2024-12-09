@@ -6,7 +6,7 @@
  * @level  : Medium
  *
  * @description
- * This function finds all elements in the array `nums` that appear more than `n/3` times, 
+ * This function finds all elements in the array `nums` that appear more than `n/3` times,
  * where `n` is the size of the array. It uses the Boyer-Moore Voting Algorithm, which
  * identifies up to two potential candidates and validates their actual counts.
  *
@@ -27,26 +27,43 @@
  * @example
  * Input: nums = [3, 2, 3]
  * Output: [3]
- * E
+ * Explanation:
+ * - Element 3 appears more than n/3 = 3/3 = 1 times.
+ *
+ * Input: nums = [1, 1, 1, 3, 3, 2, 2, 2]
+ * Output: [1, 2]
+ * Explanation:
+ * - Elements 1 and 2 both appear more than n/3 = 8/3 = 2.66 times.
+ */
 
-
-vector<int> majorityElement(vector<int>& nums) {
+vector<int> majorityElement(vector<int> &nums)
+{
     int cnt1 = 0, cnt2 = 0;
     int el1 = INT_MIN, el2 = INT_MIN;
 
     // Phase 1: Candidate Selection
-    for (int i = 0; i < nums.size(); i++) {
-        if (cnt1 == 0 && nums[i] != el2) {
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (cnt1 == 0 && nums[i] != el2)
+        {
             cnt1 = 1;
             el1 = nums[i];
-        } else if (cnt2 == 0 && nums[i] != el1) {
+        }
+        else if (cnt2 == 0 && nums[i] != el1)
+        {
             cnt2 = 1;
             el2 = nums[i];
-        } else if (el1 == nums[i]) {
+        }
+        else if (el1 == nums[i])
+        {
             cnt1++;
-        } else if (el2 == nums[i]) {
+        }
+        else if (el2 == nums[i])
+        {
             cnt2++;
-        } else {
+        }
+        else
+        {
             cnt1--;
             cnt2--;
         }
@@ -56,14 +73,19 @@ vector<int> majorityElement(vector<int>& nums) {
     vector<int> ls;
     cnt1 = 0, cnt2 = 0;
 
-    for (int i = 0; i < nums.size(); i++) {
-        if (el1 == nums[i]) cnt1++;
-        if (el2 == nums[i]) cnt2++;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (el1 == nums[i])
+            cnt1++;
+        if (el2 == nums[i])
+            cnt2++;
     }
 
     int mini = (int)(nums.size() / 3) + 1;
-    if (cnt1 >= mini) ls.push_back(el1);
-    if (cnt2 >= mini) ls.push_back(el2);
+    if (cnt1 >= mini)
+        ls.push_back(el1);
+    if (cnt2 >= mini)
+        ls.push_back(el2);
 
-    return ls; 
+    return ls;
 }
