@@ -66,7 +66,7 @@ double median(vector<int> &nums1, vector<int> &nums2)
             if (cnt == ind2)
                 el2 = nums[i];
             cnt++;
-            i++
+            i++;
         }
         else
         {
