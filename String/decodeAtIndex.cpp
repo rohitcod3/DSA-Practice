@@ -69,6 +69,7 @@ public:
         }
         for (int i = n - 1; i >= 0; i--)
         {
+
             k = k % size;
 
             if (k == 0 && isalpha(s[i]))
