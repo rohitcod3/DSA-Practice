@@ -21,7 +21,7 @@
  *    - Return the constructed string after processing all characters.
  *
  * @complexity
- * Time Complexity: O(n * m), where `n` is the number of terms and `m` is the average length of the terms.
+ * Time Complexity: O(n^2), where `n` is the number of terms and `m` is the average length of the terms.
  * - Each recursive call processes the string for the previous term.
  * Space Complexity: O(n), for the recursive stack.
  *
@@ -30,7 +30,25 @@
  * Output: "1"
  *
  * Input: n = 4
- * Output: "1211"
+ * Output: "12int countAndSay(int n)
+{
+if(n==1)return "1";
+
+string say = countAndSay(n-1);
+string result = "";
+for(int i=0;i<say.length();i++){
+    int count =1;
+    char ch = say[i];
+
+    while(i<say.length()-1 && say[i] == say[i+1])
+    {
+        count++;
+        i++;
+    }
+    result += to_string(count) + string(1, ch);
+}
+return result;
+}"
  * Explanation:
  * - Term 1: "1"
  * - Term 2: "11" (one 1)
