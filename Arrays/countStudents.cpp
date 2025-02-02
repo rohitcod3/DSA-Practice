@@ -39,25 +39,29 @@
 class Solution
 {
 public:
-    bool isSubsequence(string s, string t)
+    int countStudents(vector<int> &students, vector<int> &sandwiches)
     {
-        if (s.length() == 0)
-            return "";
-        int n = s.length();
-        int m = t.length();
-        int k = 0;
+        int n = students.size();
 
-        for (int j = 0; j < m; j++)
+        int arr[2] = {0};
+        // arr[0] count of students liking 0 sandwich
+        // arr[1] count of students liking 0 sandwich
+
+        for (int &stud : students)
         {
-            if (s[k] == t[j])
-            {
-                k++;
-            }
-            if (k == n)
-            {
-                return true;
-            }
+            arr[stud]++;
         }
-        return false;
+
+        for (int i = 0; i < n; i++)
+        {
+            int sand = sandwiches[i];
+            if (arr[sand] == 0)
+            {
+                return n - i;
+            }
+
+            arr[sand]--;
+        }
+        return 0;
     }
 };
