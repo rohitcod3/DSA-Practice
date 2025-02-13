@@ -4,6 +4,7 @@
     "string": "cpp",
     "cmath": "cpp",
     "cstdlib": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "atomic": "cpp"
   }
 }
