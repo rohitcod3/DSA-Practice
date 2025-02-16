@@ -5,6 +5,9 @@
     "cmath": "cpp",
     "cstdlib": "cpp",
     "unordered_map": "cpp",
-    "atomic": "cpp"
+    "atomic": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "utility": "cpp"
   }
 }
