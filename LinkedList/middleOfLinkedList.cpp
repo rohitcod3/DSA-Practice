@@ -9,7 +9,7 @@
  * Given the head of a singly linked list, return the middle node.
  * - If there are two middle nodes, return the second middle node.
  *
- * @approach
+ * @appro ach
  * **Two-Pass Approach (Counting Nodes)**
  * 1. **First Pass**:
  *    - Traverse the list to count the total number of nodes (`cnt`).
@@ -64,5 +64,35 @@ public:
             temp = temp->next;
         }
         return temp;
+    }
+};
+
+// Optimized Sol
+//  Using slow and fast pointers
+//@approach
+//* **Two-Pointer (Fast & Slow) Approach**
+//  * 1. **Use Two Pointers**:
+//  *    - `slow` moves one step at a time.
+//  *    - `fast` moves two steps at a time.
+//  * 2. **When `fast` reaches the end**:
+//  *    - `slow` is at the middle node.
+//*    - Return `slow` as the middle node.
+//  @complexity
+//  * **Time Complexity**: O(n) → Single pass through the linked list.
+//  * **Space Complexity**: O(1) → No extra space used.
+class Solution
+{
+public:
+    ListNode *middleNode(ListNode *head)
+    {
+        ListNode *slow = head;
+        ListNode *fast = head;
+
+        while (fast != NULL && fast->next != NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
     }
 };
