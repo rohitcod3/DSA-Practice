@@ -71,3 +71,23 @@ public:
         return head;
     }
 };
+
+// Recursive solution (optimal)
+
+// T.C -> 0(N), S.C -> O(1)
+
+class Solution
+{
+public:
+    ListNode *reverseList(ListNode *head)
+    {
+        if (head == NULL || head->next == NULL)
+            return head;
+
+        ListNode *newHead = reverseList(head->next);
+        ListNode *front = head->next;
+        front->next = head;
+        head->next = NULL;
+        return newHead;
+    }
+};
